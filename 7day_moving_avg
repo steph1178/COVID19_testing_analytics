@@ -1,0 +1,18 @@
+WITH positive_cases as
+(
+	SELECT sum(new_results_reported) as total_new_cases,
+ 	test_date
+ 	FROM covid_diagnostic_library
+ 	WHERE overall_outcome = 'Positive'
+ 	GROUP BY test_date
+ 	ORDER BY test_date desc
+)
+
+SELECT positive_cases.test_date,
+	avg(ROUND(positive_cases.total_new_cases)) OVER(
+          PARTITION BY positive_cases.test_date 
+          ORDER BY test_date desc
+          ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS seven_day_moving_avg
+FROM positive_cases
+WHERE test_date > CURRENT_DATE - 30;
+
