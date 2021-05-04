@@ -1,0 +1,27 @@
+WITH positive_cases as
+(
+	SELECT sum(new_results_reported) as positive_tests,
+ 	state_name
+ 	FROM covid_diagnostic_library
+ 	WHERE overall_outcome = 'Positive'
+ 	AND test_date > CURRENT_DATE-30
+ 	GROUP BY state_name
+ 	ORDER BY positive_tests desc
+),
+
+total_tests as
+(	
+	SELECT sum(new_results_reported) as tests_performed,
+ 	state_name
+	FROM covid_diagnostic_library
+ 	WHERE test_date > CURRENT_DATE-30
+ 	GROUP BY state_name
+ 	ORDER BY tests_performed desc
+)
+
+SELECT ROUND((positive_cases.positive_tests/CAST(total_tests.tests_performed AS decimal(9,2))*100),2) AS positivity_rate,
+		total_tests.state_name
+FROM positive_cases
+JOIN total_tests ON positive_cases.state_name = total_tests.state_name
+ORDER BY positivity_rate desc
+LIMIT 10;
