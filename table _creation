@@ -1,0 +1,9 @@
+CREATE TABLE Covid_diagnostic_library (
+	state_abbreviation varchar(2),
+	state_name varchar(90),
+	state_fips integer,
+	fema_region varchar(50),
+	overall_outcome varchar(50),
+	test_date date,
+	new_results_reported integer,
+	total_results integer);
