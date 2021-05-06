@@ -5,7 +5,7 @@
 * [Total Number of Tests Performed Yesterday:SQL Code ](https://github.com/steph1178/COVID19_testing_analytics/blob/main/total_tests_yesterday)
 * [Total Number of Tests Performed Yesterday:Results ](https://github.com/steph1178/COVID19_testing_analytics/blob/main/total_tests_yesterday_results.csv)
 
-This query measures the total number of PCR (COVID19) tests performed in the United States as of yesterday. The metric is measured by summing all the new test results reported yesterday. The results shows that there were 326 million tests performed on 5/1/2021. This is a point-in-time metric that is not indicative of any trend in testing rates.
+This query measures the total number of PCR (COVID19) tests performed in the United States as of yesterday. The metric is measured by summing all the new test results reported yesterday. The results shows that there were 326 million tests performed on 5/1/2021. This is a point-in-time metric that is not indicative of any trend in testing rates. General limitations to the COVID19 diagnostic test results is that laboratory results are submitted to local and state officials, which may  have different reporting requirements and standards that could lead to under or over counting in some states. Additionally, there is a risk of false negatives, which may increase depending on how long the infection has been present and if it is a genetic variant. These considerations will apply to all metrics using this data.
 
 
 ### 7-day Rolling Average of New Cases Per Day
